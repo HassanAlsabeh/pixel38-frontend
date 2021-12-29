@@ -75,11 +75,11 @@ function UpdateShipment() {
               e.preventDefault();
               createShipment({
                 variables: {
-                  user_id: user_id,
-                  waybill: waybill,
-                  customer_address: customer_address,
-                  customer_name: customer_name,
-                  customer_phone: customer_phone,
+                  user_id: user_id ,
+                  waybill: waybill || data.shipment.waybill,
+                  customer_address: customer_address || data.shipment.customer_address,
+                  customer_name: customer_name || data.shipment.customer_name ,
+                  customer_phone: customer_phone ||data.shipment.customer_phone,
                 },
               });
               Swal.fire("Updated Successfully", "success");
