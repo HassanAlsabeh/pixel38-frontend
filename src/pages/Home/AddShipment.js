@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 function AddShipment() {
   const users = useSelector((state) => state.users.users);
-  let user_id = users.id;
+  let user_id = localStorage.getItem("id");
+  console.log("idsdddddddddd", user_id);
   const ADD_SHIPMENT = gql`
     mutation createShipment(
       $user_id: ID!

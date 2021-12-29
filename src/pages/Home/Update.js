@@ -9,8 +9,9 @@ import Swal from "sweetalert2";
 
 function UpdateShipment() {
   let shipment_id = useParams();
-  console.log("id", shipment_id.id);
 
+  let user_id = localStorage.getItem("id");
+  console.log("id", user_id);
   const GET_SHIPMENTS = gql`
     query {
       shipment(id: ${shipment_id.id}) {
@@ -52,7 +53,6 @@ function UpdateShipment() {
   `;
   const { data } = useQuery(GET_SHIPMENTS);
   const [createShipment] = useMutation(UPDATE_SHIPMENT);
-  const [user_id, setUser_id] = useState("");
   const [waybill, setWaybill] = useState("");
   const [customer_address, setCustomer_address] = useState("");
   const [customer_name, setCustomer_name] = useState("");
@@ -86,15 +86,7 @@ function UpdateShipment() {
             }}
           >
             <h3>Update Shipment</h3>
-            <fieldset>
-              <input
-                defaultValue={data && data.shipment.user_id}
-                type="text"
-                required
-                disabled
-                onChange={(e) => setUser_id(e.target.value)}
-              />
-            </fieldset>
+           
             <fieldset>
               <input
                 defaultValue={data && data.shipment.waybill}
